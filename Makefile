@@ -82,10 +82,10 @@ ${COMPILER}/main.axf: ${COMPILER}/main.o
 ${COMPILER}/main.axf: ${COMPILER}/I2Clib.o
 ${COMPILER}/main.axf: ${COMPILER}/MPU6050.o
 ${COMPILER}/main.axf: ${COMPILER}/spi.o
-${COMPILER}/main.axf: ${COMPILER}/kalman.o
+${COMPILER}/main.axf: ${COMPILER}/offline_kalman.o
 ${COMPILER}/main.axf: ${COMPILER}/motors.o
+${COMPILER}/main.axf: ${COMPILER}/buffereduart.o
 ${COMPILER}/main.axf: ${COMPILER}/startup_${COMPILER}.o
-${COMPILER}/main.axf: ${COMPILER}/uartstdio.o
 ${COMPILER}/main.axf: ${ROOT}/driverlib/${COMPILER}-cm4f/libdriver-cm4f.a
 ${COMPILER}/main.axf: main.ld
 SCATTERgcc_main=main.ld

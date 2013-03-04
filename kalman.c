@@ -45,6 +45,11 @@ void K_initialize()
 
 }
 
+void K_Get_Control(float x, float y)
+{
+	control_x = x * I;
+	control_y = y * I;
+}
 
 void K_Predict_State()
 {
@@ -52,6 +57,7 @@ void K_Predict_State()
 	state.dx = state.dx + DELTA * control_x;
 	state.y = state.y + DELTA * state.dy + DSQUARED * control_y / 2;
 	state.dy = state.dy + DELTA * control_y;
+	
 }
 
 

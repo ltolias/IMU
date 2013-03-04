@@ -15,10 +15,11 @@
 #include "stdint.h"
 
 
-#define MOTORUPDATE 100 //Hertz
+#define MOTORUPDATE 200.0f //Hertz
+#define MOTORS 50.0f
 
 
-void motorSet(int motor, uint16_t percent);
+void motorSet(int motor, float percent);
 
 
 void initPWM();

@@ -12,7 +12,7 @@
     \param percent is the percentage to set (0-100)
     \return none
 */
-void motorSet(int motor, uint16_t percent)
+void motorSet(int motor, float percent)
 {   
     //sterilize input
     if (percent > 100) percent = 100;
@@ -21,7 +21,7 @@ void motorSet(int motor, uint16_t percent)
     //prepare prescale and match values
     uint32_t cycles_per_ms = SysCtlClockGet() / 1000;
     //*debug: straight pwm leds- */uint32_t matchl = SysCtlClockGet() / MOTORUPDATE / 100 * percent;
-    uint32_t matchl = cycles_per_ms + (cycles_per_ms / 100) * percent;
+    uint32_t matchl = cycles_per_ms + (uint32_t)(percent * (cycles_per_ms / 100));
     uint8_t matchh = matchl >> 16;
     matchl &= 0xFFFF;
 

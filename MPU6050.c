@@ -68,8 +68,9 @@ THE SOFTWARE.
  */
 void initIMU() {
     setClockSource(MPU6050_CLOCK_PLL_XGYRO);
-    setFullScaleGyroRange(MPU6050_GYRO_FS_250);
-    setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
+    setFullScaleGyroRange(MPU6050_GYRO_FS_500);
+    setFullScaleAccelRange(MPU6050_ACCEL_FS_16);
+    setDLPFMode(4); //94 Hz
     setSleepEnabled(false); // thanks to Jack Elston for pointing this one out!
 }
 

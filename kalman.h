@@ -11,12 +11,22 @@
 
 
 
-#define DELTA 0.002
-#define DSQUARED DELTA * DELTA
-#define ACCELCOVARIANCE 10
-#define GYROCOVARIANCE 10
-#define PROCESSCOVARIANCE 10
+#define DELTA 1
+#define ACCELDEVIATION 5
+#define GRYODEVIATION 5
+#define PROCESSDEVIATION 5
 
+#define DSQUARED DELTA * DELTA
+#define ACCELCOVARIANCE ACCELDEVIATION*ACCELDEVIATION
+#define GYROCOVARIANCE GRYODEVIATION*GRYODEVIATION
+#define PROCESSCOVARIANCE PROCESSDEVIATION*PROCESSDEVIATION
+
+//heres a pretty tricky part, we want this constant I to be equal to the thrust (grams) per motor percentage multiplied by
+//the lever arm of the motors (torque) divided by the moment of innertia of the quadcopter about the axis
+//this could be found experimentally I guess... or we can try a lovely value of... .2?
+//this value is, however, very important to the accuracy of the model...
+
+#define I 0.2
 
 
 typedef struct{
@@ -51,6 +61,8 @@ float Kx[4];
 float Ky[4];
 
 void K_initialize();
+
+void K_Get_Control(float x, float y);
 
 void K_Predict_State();
 
